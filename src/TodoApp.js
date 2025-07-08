@@ -13,6 +13,13 @@ export default function TodoApp() {
     setTask(e.target.value);
   }
 
+
+  function handleKeyPress(e) {
+    if (e.key === "Enter") {
+      postRequest();
+    }
+  }
+
   async function postRequest() {
     if (task === "") {
       alert("Please enter a task");
@@ -37,11 +44,6 @@ export default function TodoApp() {
     }
   }
 
-  function handleKeyPress(e) {
-    if (e.key === "Enter") {
-      postRequest();
-    }
-  }
 
   return (
     <div className="todo-app">
@@ -61,7 +63,7 @@ export default function TodoApp() {
       <div className="input-container">
         <input 
           onChange={handleUserInput} 
-          onKeyPress={handleKeyPress}
+          onKeyDown={handleKeyPress}
           value={task} 
           placeholder="Enter a new task..." 
           className="task-input"
